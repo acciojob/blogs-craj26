@@ -13,7 +13,7 @@ public class ImageService {
     @Autowired
     BlogRepository blogRepository;
 
-    public Image createAndReturn(Integer blogId, String description, String dimensions){
+    public Image addImage(Integer blogId, String description, String dimensions){
         Blog blog=blogRepository.findById(blogId).get();
         Image image=new Image( blog,description,dimensions);
 //        image.setBlog(blog);

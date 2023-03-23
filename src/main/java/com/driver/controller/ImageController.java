@@ -15,10 +15,10 @@ public class ImageController {
     ImageService imageService;
 
     @PostMapping("/create")
-    public ResponseEntity<Image> createAndReturn(@PathVariable int blogId,
+    public ResponseEntity<Image> addImage(@PathVariable int blogId,
                                                  @RequestParam String description,
                                                  @RequestParam String dimensions) {
-        Image image = imageService.createAndReturn(blogId,description,dimensions);
+        Image image = imageService.addImage(blogId,description,dimensions);
         return new ResponseEntity<>(image, HttpStatus.CREATED);
     }
 
