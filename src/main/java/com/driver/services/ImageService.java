@@ -1,6 +1,7 @@
 package com.driver.services;
 
 import com.driver.models.*;
+import com.driver.repositories.BlogRepository;
 import com.driver.repositories.ImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,8 +10,11 @@ import org.springframework.stereotype.Service;
 public class ImageService {
     @Autowired
     ImageRepository imageRepository;
+    @Autowired
+    BlogRepository blogRepository;
 
-    public Image createAndReturn(Blog blog, String description, String dimensions){
+    public Image createAndReturn(Integer blogId, String description, String dimensions){
+        Blog blog=blogRepository.findById(blogId).get();
         Image image=new Image();
         image.setBlog(blog);
         image.setDescription(description);
@@ -19,6 +23,7 @@ public class ImageService {
 
         Blog blog1=new Blog();
         blog1.getImageList().add(image);
+        blogRepository.save(blog);
         return image;
         //create an image based on given parameters and add it to the imageList of given blog
     }
