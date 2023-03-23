@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class ImageService {
     @Autowired
-    ImageRepository imageRepository;
+    ImageRepository imageRepository2;
     @Autowired
-    BlogRepository blogRepository;
+    BlogRepository blogRepository2;
 
     public Image addImage(Integer blogId, String description, String dimensions){
-        Blog blog=blogRepository.findById(blogId).get();
+        Blog blog=blogRepository2.findById(blogId).get();
         Image image=new Image( blog,description,dimensions);
 //        image.setBlog(blog);
 //        image.setDescription(description);
@@ -23,13 +23,13 @@ public class ImageService {
 
         Blog blog1=new Blog();
         blog1.getImageList().add(image);
-        blogRepository.save(blog);
+        blogRepository2.save(blog);
         return image;
         //create an image based on given parameters and add it to the imageList of given blog
     }
 
     public void deleteImage(int id){
-        imageRepository.deleteById(id);
+        imageRepository2.deleteById(id);
     }
 
 //    public Image findById(int id) {
@@ -41,7 +41,7 @@ public class ImageService {
 //        if(!imageRepository2.findById(id).isPresent()){
 //            throw new Exception();
 //        }
-        Image image = imageRepository.findById(id).get();
+        Image image = imageRepository2.findById(id).get();
 
         String imageDimensions = image.getDimensions();
         String [] imgarray = imageDimensions.split("X");

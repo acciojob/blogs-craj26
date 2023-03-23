@@ -17,13 +17,10 @@ import java.util.List;
 @Service
 public class BlogService {
     @Autowired
-    BlogRepository blogRepository;
+    BlogRepository blogRepository1;
 
     @Autowired
-    ImageService imageService;
-
-    @Autowired
-    UserRepository userRepository;
+    UserRepository userRepository1;
 
 //    public List<Blog> showBlogs(){
 //        //find all blogs
@@ -32,10 +29,10 @@ public class BlogService {
 
     public Blog createAndReturnBlog(Integer userId, String title, String content) {
         //create a blog at the current time
-        User user = userRepository.findById(userId).get();
+        User user = userRepository1.findById(userId).get();
         Blog blog=new Blog(user,title,content);
         blog.setPubDate(new Date());
-        userRepository.save(user);
+        userRepository1.save(user);
         user.getBlogList().add(blog);
 
         //blogRepository.save(blog);
@@ -57,7 +54,7 @@ public class BlogService {
 //    }
 
     public void deleteBlog(int blogId){
-        blogRepository.deleteById(blogId);
+        blogRepository1.deleteById(blogId);
         //delete blog and corresponding images
     }
 
