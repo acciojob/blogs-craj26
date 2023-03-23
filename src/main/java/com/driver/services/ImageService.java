@@ -21,8 +21,7 @@ public class ImageService {
 //        image.setDimensions(dimensions);
 //        //imageRepository.save(image);
 
-        Blog blog1=new Blog();
-        blog1.getImageList().add(image);
+        blog.getImageList().add(image);
         blogRepository2.save(blog);
         return image;
         //create an image based on given parameters and add it to the imageList of given blog
