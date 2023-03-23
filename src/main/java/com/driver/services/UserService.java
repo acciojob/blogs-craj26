@@ -29,13 +29,14 @@ public class UserService {
         userRepository.deleteById(userId);
     }
 
-    public void updateUser(int id,String password){
+    public User updateUser(int id,String password){
         User user=userRepository.findById(id).get();
         user.setPassword(password);
         userRepository.save(user);
+        return user;
     }
 
-    public User findUserByUsername(String username){
-        return userRepository.findByUsername(username);
-    }
+//    public User findUserByUsername(String username){
+//        return userRepository.findByUsername(username);
+//    }
 }
