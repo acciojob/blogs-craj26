@@ -12,8 +12,8 @@ public class User {
 
     private String username;
     private String password;
-    private  String firstname;
-    private String lastname;
+    private  String firstname="test";
+    private String lastname="test";
 
     //MAPPING ONE TO MANY
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
@@ -23,6 +23,10 @@ public class User {
 
     public User() {
 
+    }
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
     public User(int id, String username, String password, String firstname, String lastname,List<Blog> blogList) {
         this.id = id;

@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "blog")
+@Table(name = "Blog")
 public class Blog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +29,11 @@ public class Blog {
 
     public Blog() {
 
+    }
+    public Blog(User user, String title, String content) {
+        this.title = title;
+        this.content = content;
+        this.user = user;
     }
 
     public Blog(int id, String title, String content, Date pubDate, User user, List<Image> imageList) {
