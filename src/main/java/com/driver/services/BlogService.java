@@ -7,6 +7,7 @@ import com.driver.repositories.BlogRepository;
 import com.driver.repositories.ImageRepository;
 import com.driver.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,21 +17,33 @@ import java.util.List;
 @Service
 public class BlogService {
     @Autowired
-    BlogRepository blogRepository1;
+    BlogRepository blogRepository;
 
     @Autowired
-    ImageService imageService1;
+    ImageService imageService;
 
     @Autowired
-    UserRepository userRepository1;
+    UserRepository userRepository;
 
-    public List<Blog> showBlogs(){
-        //find all blogs
-
-    }
+//    public List<Blog> showBlogs(){
+//        //find all blogs
+//
+//    }
 
     public void createAndReturnBlog(Integer userId, String title, String content) {
         //create a blog at the current time
+        User user = userRepository.findById(userId).get();
+        Blog blog=new Blog();
+        blog.setUser(user);
+//        blog.setBlogId(userId);
+        blog.setContent(content);
+        blog.setPubDate(new Date());
+        blog.setTitle(title);
+
+        userRepository.save(user);
+        user.getBlogList().add(blog);
+
+        blogRepository.save(blog);
 
         //updating the blog details
 
@@ -38,15 +51,21 @@ public class BlogService {
 
     }
 
-    public Blog findBlogById(int blogId){
-        //find a blog
-    }
+//    public Blog findBlogById(int blogId){
+//        //find a blog
+//    }
 
-    public void addImage(Integer blogId, String description, String dimensions){
-        //add an image to the blog after creating it
-    }
+//    public void addImage(Integer blogId, String description, String dimensions){
+//
+//        //add an image to the blog after creating it
+//    }
 
     public void deleteBlog(int blogId){
+        blogRepository.deleteById(blogId);
         //delete blog and corresponding images
     }
+
+//    public int numberOfBlog(ResponseEntity<Integer> allBlogs) {
+//        return blogRepository.
+//    }
 }
