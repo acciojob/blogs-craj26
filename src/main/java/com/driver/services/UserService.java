@@ -16,14 +16,12 @@ public class UserService {
 //    @Autowired
 //    BlogService blogService;
 
-    public void createUser(String username,String password){
-        User user=new User();
-        user.setFirstname("test");
-        user.setLastname("test");
-        user.setUsername(username);
-        user.setPassword(password);
+    public User createUser(String username,String password){
+        User user=new User(username,password);
+
 
         userRepository.save(user);
+        return user;
     }
 
     public void deleteUser(int userId){
