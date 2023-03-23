@@ -11,7 +11,7 @@ import java.util.List;
 public class Blog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int blogId;
+    private int id;
 
     private String title;
     private String content;
@@ -31,8 +31,8 @@ public class Blog {
 
     }
 
-    public Blog(int blogId, String title, String content, Date pubDate, User user, List<Image> imageList) {
-        this.blogId = blogId;
+    public Blog(int id, String title, String content, Date pubDate, User user, List<Image> imageList) {
+        this.id = id;
         this.title = title;
         this.content = content;
         this.pubDate = pubDate;
@@ -40,12 +40,12 @@ public class Blog {
         this.imageList = imageList;
     }
 
-    public int getBlogId() {
-        return blogId;
+    public int getId() {
+        return id;
     }
 
-    public void setBlogId(int blogId) {
-        this.blogId = blogId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {

@@ -8,7 +8,7 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int userid;
+    private int id;
 
     private String username;
     private String password;
@@ -24,8 +24,8 @@ public class User {
     public User() {
 
     }
-    public User(int userid, String username, String password, String firstname, String lastname,List<Blog> blogList) {
-        this.userid = userid;
+    public User(int id, String username, String password, String firstname, String lastname,List<Blog> blogList) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.firstname = firstname;
@@ -33,12 +33,12 @@ public class User {
         this.blogList=blogList;
     }
 
-    public int getUserid() {
-        return userid;
+    public int getId() {
+        return id;
     }
 
-    public void setUserid(int userid) {
-        this.userid = userid;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUsername() {
